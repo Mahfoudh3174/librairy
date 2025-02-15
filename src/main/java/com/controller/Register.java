@@ -30,7 +30,7 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("register.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/auth/register.jsp").forward(request, response);
 	}
 
 	/**
@@ -78,16 +78,16 @@ public class Register extends HttpServlet {
 
             
             if(UserDB.isUser(numero)) {
-            	request.setAttribute("message", "l'utilisateur dejas existe");
+            	request.setAttribute("fail", "l'utilisateur dejas existe");
             	request.getRequestDispatcher("register.jsp").forward(request, response);
             }
             UserDB.addUser(user);
-        	request.setAttribute("message", "user created successfuly");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        	request.setAttribute("success", "user created successfuly");
+            request.getRequestDispatcher("WEB-INF/auth/login.jsp").forward(request, response);
 
         } catch (IllegalArgumentException e) {
-            request.setAttribute("message", e.getMessage());
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+            request.setAttribute("fail", e.getMessage());
+            request.getRequestDispatcher("WEB-INf/auth/register.jsp").forward(request, response);
         }
 
 	}

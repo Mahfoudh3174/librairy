@@ -11,11 +11,19 @@
 
     <div class="container-fluid mt-5">
         <% 
-            String message = (String)  request.getAttribute("message");
-            if (message != null) { 
+            String success = (String) request.getAttribute("success");
+            String fail = (String) request.getAttribute("fail");
         %>
-            <div class="alert alert-secondary text-center" role="alert">
-                <%= message %>
+
+        <% if (success != null) { %>
+            <div class="alert alert-success text-center" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+
+        <% if (fail != null) { %>
+            <div class="alert alert-danger text-center" role="alert">
+                <%= fail %>
             </div>
         <% } %>
 
@@ -33,14 +41,13 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Login</button>
                     <div class="mt-2 text-center">
-                        <a href="register.jsp">Créer un compte</a>
+                        <a href="Register">Créer un compte</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Load jQuery before Bootstrap for proper script functionality -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -25,7 +25,7 @@ public class Book {
 	public void decriment() {
 		this.quantity-=1;
 	}
-	public void ecriment() {
+	public void incriment() {
 		this.quantity+=1;
 	}
 

@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("WEB-INF/auth/login.jsp").forward(request, response);
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class Login extends HttpServlet {
             User user = UserDB.findUser(nom, password);
                  
                 if (user != null) {
-                    
+                    session.setAttribute("role",user.getRole());
                     session.setAttribute("id", user.getNumero());
                     
                     // Redirect based on role
@@ -72,13 +72,13 @@ public class Login extends HttpServlet {
                             break;
                     }
                 } else {
-                    request.setAttribute("message", "User not found");
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    request.setAttribute("fail", "User not found");
+                    request.getRequestDispatcher("WEB-INF/auth/login.jsp").forward(request, response);
                 }
 
         } catch (IllegalArgumentException e) {
-            request.setAttribute("message", e.getMessage());
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.setAttribute("fail", e.getMessage());
+            request.getRequestDispatcher("WEB-INF/auth/login.jsp").forward(request, response);
             
         }
 	}

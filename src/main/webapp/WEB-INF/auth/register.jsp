@@ -1,16 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html><%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,21 +8,27 @@
 </head>
 <body>
     <div class="container-fluid mt-4">
-           <% 
-                            
-                            String message =(String) request.getAttribute("message");
-                            if (message != null) {
-                        %>
-                            <div class="alert alert-secondary text-center" role="alert">
-                                <%= message %>
-                            </div>
-                        <% 
-                            }%>
+        <% 
+            String success = (String) request.getAttribute("success");
+            String fail = (String) request.getAttribute("fail");
+        %>
+
+        <% if (success != null) { %>
+            <div class="alert alert-success text-center" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+
+        <% if (fail != null) { %>
+            <div class="alert alert-danger text-center" role="alert">
+                <%= fail %>
+            </div>
+        <% } %>
         <div class="row justify-content-center">
             <div class="col-md-6">
            
                 <h2 class="text-center">Register </h2>
-                <form action="Regiter" method="post">
+                <form action="Register" method="post">
                       <div class="form-group">
                         <label for="nom">Numero</label>
                         <input type="text" name="numero" class="form-control"  placeholder="Enter Matricule">
@@ -42,7 +37,7 @@
                         <label for="nom">Nom </label>
                         <input type="text" name="nom" class="form-control"  placeholder="Enter nom">
                     </div>
-                                        <div class="form-group">
+                          <div class="form-group">
                         <label for="nom">Prenom </label>
                         <input type="text" name="prenom" class="form-control"  placeholder="Enter Prenom">
                     </div>
@@ -56,7 +51,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
                                         <div class="mt-2 text-center">
-                        <a href="login.jsp">login</a>
+                        <a href="Login">login</a>
                     </div>
                 </form>
 
