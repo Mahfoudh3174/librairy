@@ -3,7 +3,7 @@ package com.model;
 import java.util.UUID;
 
 public class User {
-	private String id;
+	
 	private String numero;
 	private String nom;
 	private String prenom;
@@ -12,13 +12,11 @@ public class User {
     private String role="user";
 
     public User() {
-    	this.id = UUID.randomUUID().toString(); 
     }
     public User(String nom,String password,String role) {
     	this.nom=nom;
     	this.password=password;
     	this.role=role;
-    	this.id = UUID.randomUUID().toString(); 
     }
 
     public User(String numero, String nom, String prenom,String email, String password) {
@@ -28,7 +26,6 @@ public class User {
 		this.prenom = prenom;
 		this.email=email;
 		this.password = password;
-		this.id = UUID.randomUUID().toString(); 
 	}
     
 
@@ -107,12 +104,7 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	
 
 

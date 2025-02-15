@@ -11,15 +11,14 @@ public class UserDB {
     static {
         // Default Admin User
         User admin = new User("admin", "admin", "admin");
-        users.put(admin.getId(), admin);
+        admin.setNumero("1");
+        users.put(admin.getNumero(), admin);
     }
 
-    public static boolean addUser(User user) {
-        if (!users.containsKey(user.getId())) {
-            users.put(user.getId(), user);
-            return true;
-        }
-        return false;
+    public static void addUser(User user) {
+        
+        users.put(user.getNumero(), user);
+          
     }
 
     public static Map<String, User> getUsers() {
@@ -30,7 +29,7 @@ public class UserDB {
         Map<String, User> bibs = new HashMap<>();
         for (User u : users.values()) {
             if ("bibliothecaire".equals(u.getRole())) {
-                bibs.put(u.getId(), u);
+                bibs.put(u.getNumero(), u);
             }
         }
         return bibs;
@@ -43,10 +42,7 @@ public class UserDB {
                 .orElse(null);
     }
 
-    public static boolean validateUser(String nom, String password) {
-        User user = findUser(nom, password);
-        return user != null;
-    }
+
 
     public static void deleteUser(String id) {
         users.remove(id);
@@ -71,6 +67,6 @@ public class UserDB {
     }
 
     public static void editUser(User user) {
-        users.put(user.getId(), user);
+        users.put(user.getNumero(), user);
     }
 }
